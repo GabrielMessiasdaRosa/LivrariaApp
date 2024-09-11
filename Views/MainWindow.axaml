@@ -1,0 +1,62 @@
+<Window xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:LivrariaApp.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+    x:Class="LivrariaApp.Views.MainWindow"
+    x:DataType="vm:MainWindowViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    Title="LivrariaApp">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <!-- Adicionando o ScrollViewer para tornar a tela scrollável -->
+    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+        <StackPanel Background="Gray">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+                <Button Grid.Column="1" Content="Adicionar" Background="#03a5fc" Foreground="White"
+                        Click="Adicionar_Livro_Button_Click"/>
+            </Grid>
+
+            <!-- ListBox com dados scrolláveis -->
+            <ListBox ItemsSource="{Binding Livros}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Vertical">
+                                <TextBlock Text="{Binding Titulo}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Autor}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="R$"/>
+                                    <TextBlock Text="{Binding Preco}"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding AnoPublicacao}"/>
+                            </StackPanel>
+
+                            <!-- Botoes de acao justificados à direita -->
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Content="Editar" Background="#03a5fc" Foreground="White"
+                                        Click="Editar_Livro_Button_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

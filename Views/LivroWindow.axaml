@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:LivrariaApp.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="160"
+    d:DesignHeight="160"
+    x:Class="LivrariaApp.Views.LivroWindow"
+    x:DataType="vm:LivroWindowViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    Title="LivrariaApp">
+    <StackPanel Margin="10">
+    <TextBlock Text="{Binding Livro.Titulo, StringFormat='Editar {0}'}" />
+    <StackPanel Margin="10">
+        <TextBlock Text="Título:" />
+        <TextBox Text="{Binding Livro.Titulo}" />
+    
+        <TextBlock Text="Autor:" Margin="0,10,0,0" />
+        <TextBox Text="{Binding Livro.Autor}" />
+    
+        <TextBlock Text="Ano de Publicação:" Margin="0,10,0,0" />
+        <TextBox Text="{Binding Livro.AnoPublicacao}" />
+
+        <TextBlock Text="Preço:" Margin="0,10,0,0" />
+        <TextBox Text="{Binding Livro.Preco}" />
+    </StackPanel>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <Button Content="Salvar" Background="#03a5fc" Foreground="White" Click="Salvar_Button_Click"/>
+        <Button Content="Excluir" Margin="10,0,0,0" Background="#fc4949" Foreground="White" Click="Excluir_Button_Click"/>
+        <Button Content="Cancelar" Margin="10,0,0,0" Background="#fc4949" Foreground="White" Click="Cancelar_Button_Click"/>
+    </StackPanel>
+    </StackPanel>
+</Window>

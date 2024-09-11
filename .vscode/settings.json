@@ -1,0 +1,13 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#e4e002",
+        "titleBar.activeBackground": "#c1c41a",
+        "titleBar.activeForeground": "#000000"
+    },
+    "accessibility.voice.keywordActivation": "off",
+    "accessibility.signals.voiceRecordingStopped": {
+        "sound": "on"
+    },
+    "accessibility.voice.speechLanguage": "pt-BR",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
